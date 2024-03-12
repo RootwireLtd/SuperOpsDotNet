@@ -1,0 +1,22 @@
+{
+  "schema": "superops.graphql",
+  "documents": "**/*.graphql",
+  "extensions": {
+    "strawberryShake": {
+      "name": "SuperOpsGraphQLClient",
+      "namespace": "Rootwire.ApiClients.SuperOps",
+      "url": "https://api.superops.ai/msp/",
+      "dependencyInjection": true,
+      "records": {
+        "inputs": false,
+        "entities": false
+      },
+      "transportProfiles": [
+        {
+          "default": "Http",
+          "subscription": "WebSocket"
+        }
+      ]
+    }
+  }
+}

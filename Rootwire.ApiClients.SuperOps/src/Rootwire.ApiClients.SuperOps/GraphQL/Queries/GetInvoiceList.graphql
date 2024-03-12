@@ -1,0 +1,40 @@
+﻿query getInvoiceList($input: ListInfoInput!) {
+    getInvoiceList(input: $input) {
+        invoices {
+            ...InvoiceFragment
+        }
+        listInfo {
+            ...ListInfoFragment
+        }
+    }
+}
+
+fragment InvoiceFragment on Invoice
+{
+    invoiceId
+    displayId
+    client
+    site
+    invoiceDate
+    dueDate
+    statusEnum
+    sentToClient
+    discountAmount
+    additionalDiscount
+    additionalDiscountRate
+    totalAmount
+    notes
+    paymentDate
+    paymentMethod
+    paymentReference
+    invoicePaymentTerm
+}
+
+fragment ListInfoFragment on ListInfo
+{
+    page
+    pageSize
+    condition
+    hasMore
+    totalCount
+}

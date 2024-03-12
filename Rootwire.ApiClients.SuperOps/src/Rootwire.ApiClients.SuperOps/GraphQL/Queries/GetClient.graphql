@@ -1,0 +1,15 @@
+﻿query getClient($input: ClientIdentifierInput!) {
+    getClient(input: $input) {
+        accountId
+        name
+        stage
+        status
+        emailDomains
+        accountManager
+        primaryContact
+        secondaryContact
+        hqSite
+        technicianGroups
+        customFields
+    }
+}

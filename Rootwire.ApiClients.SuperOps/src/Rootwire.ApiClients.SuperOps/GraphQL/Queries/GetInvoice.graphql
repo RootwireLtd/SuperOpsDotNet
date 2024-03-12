@@ -1,0 +1,53 @@
+﻿query getInvoice($input: InvoiceIdentifierInput!) {
+    getInvoice(input: $input) {
+        invoiceId
+        displayId
+        client
+        site
+        invoiceDate
+        dueDate
+        statusEnum
+        sentToClient
+        items {
+            ...InvoiceItemFragment
+        }
+        taxes {
+            ...InvoiceTaxItemFragment
+        }
+        discountAmount
+        additionalDiscount
+        additionalDiscountRate
+        totalAmount
+        notes
+        paymentDate
+        paymentMethod
+        paymentReference
+        invoicePaymentTerm
+    }
+}
+
+fragment InvoiceItemFragment on InvoiceItem
+{
+    itemId
+    billedDate
+    details
+    quantity
+    unitPrice
+    discountRate
+    amount
+    taxable
+    tax
+    serviceItem
+    taxAmount
+    totalAmount
+}
+
+fragment InvoiceTaxItemFragment on InvoiceTaxItem
+{
+    tax
+    taxRate
+    taxableAmount
+    taxAmount
+    id
+    rate
+}

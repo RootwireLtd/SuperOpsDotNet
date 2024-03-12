@@ -1,0 +1,25 @@
+﻿query getClientList($input: ListInfoInput!) {
+    getClientList(input: $input) {
+        clients {
+            ...ClientFragment
+        }
+        listInfo {
+            ...ListInfoFragment
+        }
+    }
+}
+
+fragment ClientFragment on Client
+{
+    accountId
+    name
+    stage
+    status
+    emailDomains
+    accountManager
+    primaryContact
+    secondaryContact
+    hqSite
+    technicianGroups
+    customFields
+}

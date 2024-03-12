@@ -1,0 +1,143 @@
+schema {
+  query: Query
+}
+
+type Query {
+  getInvoiceList(input: ListInfoInput!): InvoiceList
+  getInvoice(input: InvoiceIdentifierInput!): Invoice
+  getClientList(input: ListInfoInput!): ClientList
+  getClient(input: ClientIdentifierInput!): Client
+}
+
+input ListInfoInput {
+  page: Int
+  pageSize: Int
+  condition: RuleConditionInput
+  sort: [SortInput]
+}
+
+input RuleConditionInput {
+  attribute: String
+  operator: String
+  value: JSON
+}
+
+scalar JSON
+
+input SortInput {
+  attribute: String
+  order: SortOrder
+}
+
+enum SortOrder {
+  ASC
+  DESC
+}
+
+type ClientList{
+  clients: [Client]
+  listInfo: ListInfo
+
+}
+
+input ClientIdentifierInput
+{
+  accountId: ID!
+}
+
+type Client {
+  accountId: ID!
+  name: String!
+  stage: String!
+  status: String
+  emailDomains: [String]
+  accountManager: JSON
+  primaryContact: JSON
+  secondaryContact: JSON
+  hqSite: JSON
+  technicianGroups: JSON
+  customFields: JSON
+}
+
+type InvoiceList {
+  invoices: [Invoice]
+  listInfo: ListInfo
+}
+
+type Invoice
+{
+  invoiceId: ID!
+  displayId: String
+  client: JSON
+  site: JSON
+  invoiceDate: String!
+  dueDate: String
+  statusEnum: InvoiceStatus
+  sentToClient: Boolean
+  items: [InvoiceItem]
+  taxes: [InvoiceTaxItem]
+  discountAmount: String
+  additionalDiscount: String
+  additionalDiscountRate: String
+  totalAmount: String
+  notes: String
+  paymentDate: String
+  paymentMethod: JSON
+  paymentReference: String
+  invoicePaymentTerm: JSON
+}
+
+input InvoiceIdentifierInput
+{
+  invoiceId: ID!
+}
+
+type InvoiceItem
+{
+  itemId: ID!,
+  billedDate: String!
+  details: String
+  quantity: String!
+  unitPrice: String!
+  discountRate: String
+  amount: String
+  taxable: Boolean
+  tax: JSON
+  serviceItem: JSON
+  taxAmount: String
+  totalAmount: String
+  invoice: Invoice
+}
+
+enum InvoiceStatus {
+  DRAFT
+  APPROVED
+  PAID
+  OVERDUE
+  VOID
+}
+
+type InvoiceTaxItem
+{
+  tax: JSON!
+  taxRate: String!
+  taxableAmount: String!
+  taxAmount: String!
+  id: ID!
+  rate: JSON!
+}
+
+type ListInfo
+{
+  page: Int
+  pageSize: Int
+  sort: [Sort]
+  condition: JSON
+  hasMore: Boolean
+  totalCount: Int
+}
+type Sort
+{
+  attribute: String
+  order: SortOrder
+}
