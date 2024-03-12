@@ -1,2 +1,2 @@
 # SuperOpsDotNet
-An API Client Library for FreeAgent written in C#/dotnet
+An API Client Library for SuperOps written in C#/dotnet
