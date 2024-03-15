@@ -1,0 +1,52 @@
+query getServiceItemList($input: ListInfoInput!) {
+    getServiceItemList(input: $input) {
+        items {
+            ...ServiceItemFragment
+        }
+        listInfo {
+            ...ListInfoFragment
+        }
+    }
+}
+
+fragment ServiceItemFragment on ServiceItem
+{
+    itemId
+    name
+    description
+    quantityType
+    category
+    {
+        categoryId
+        name
+    }
+
+    useAsWorklogItem
+    unitPrice
+    businessHoursUnitPrice
+    afterHoursUnitPrice
+    roundUpValue
+    quantity
+    amount
+    adjustBlockItemAgainstAllItems
+    blockItemAdjustedItems
+    {
+        itemId
+        name
+        description
+        quantityType
+    }
+    blockItemUsedIn
+    salesTax
+    {
+        taxId
+        name
+        rates
+        {
+            rateId
+            name
+            rateValue
+        }
+        totalRate
+    }
+}

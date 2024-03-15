@@ -7,6 +7,8 @@ type Query {
   getInvoice(input: InvoiceIdentifierInput!): Invoice
   getClientList(input: ListInfoInput!): ClientList
   getClient(input: ClientIdentifierInput!): Client
+  getServiceItemList(input: ListInfoInput!): ServiceItemList
+  getServiceItem(input: ServiceItemIdentifierInput!) : ServiceItem
 }
 
 input ListInfoInput {
@@ -140,6 +142,18 @@ type Sort
 {
   attribute: String
   order: SortOrder
+}
+
+type ServiceItemList
+{
+  items: [ServiceItem]
+  listInfo: ListInfo
+}
+
+
+input ServiceItemIdentifierInput
+{
+  itemId: ID!
 }
 
 type ServiceItem

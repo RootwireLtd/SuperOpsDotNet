@@ -1,0 +1,5 @@
+query getServiceItem($input: ServiceItemIdentifierInput!) {
+    getServiceItem(input: $input) {
+        ...ServiceItemFragment
+    }
+}
