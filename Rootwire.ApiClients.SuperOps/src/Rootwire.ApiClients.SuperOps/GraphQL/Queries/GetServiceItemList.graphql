@@ -37,6 +37,7 @@ fragment ServiceItemFragment on ServiceItem
         quantityType
     }
     blockItemUsedIn
+    salesTaxEnabled
     salesTax
     {
         taxId
@@ -47,6 +48,5 @@ fragment ServiceItemFragment on ServiceItem
             name
             rateValue
         }
-        totalRate
     }
 }
