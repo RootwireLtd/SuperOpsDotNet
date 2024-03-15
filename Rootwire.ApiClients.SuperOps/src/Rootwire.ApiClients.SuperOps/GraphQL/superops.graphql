@@ -9,6 +9,7 @@ type Query {
   getClient(input: ClientIdentifierInput!): Client
   getServiceItemList(input: ListInfoInput!): ServiceItemList
   getServiceItem(input: ServiceItemIdentifierInput!) : ServiceItem
+  getServiceCategoryList: [ServiceCategory]
 }
 
 input ListInfoInput {
