@@ -141,3 +141,52 @@ type Sort
   attribute: String
   order: SortOrder
 }
+
+type ServiceItem
+{
+  itemId: ID!,
+  name: String!,
+  description: String
+  quantityType: ServiceItemQuantityType!
+  category: ServiceCategory
+  useAsWorklogItem: Boolean
+  unitPrice: String
+  businessHoursUnitPrice: String
+  afterHoursUnitPrice: String
+  roundUpValue: Int
+  quantity: String
+  amount: String
+  adjustBlockItemAgainstAllItems: Boolean
+  blockItemAdjustedItems: [ServiceItem]
+  blockItemUsedIn: Boolean
+  salesTax: Tax
+}
+
+enum ServiceItemQuantityType
+{
+  UNITS
+  HOURS
+  BLOCK_HOURS
+  BLOCK_MONEY
+}
+
+type ServiceCategory
+{
+  categoryId: ID!
+  name: String!
+}
+
+type Tax
+{
+  taxId: ID!
+  name: String!
+  rates: [TaxRate]
+  totalRate: String
+}
+
+type TaxRate
+{
+  rateId: ID!
+  name: String!
+  rateValue: String!
+}
