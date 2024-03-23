@@ -10,6 +10,7 @@ type Query {
   getServiceItemList(input: ListInfoInput!): ServiceItemList
   getServiceItem(input: ServiceItemIdentifierInput!) : ServiceItem
   getServiceCategoryList: [ServiceCategory]
+  getTicket(input: TicketIdentifierInput!): Ticket
   getTicketList(input: ListInfoInput!): TicketList
 }
 
@@ -212,6 +213,11 @@ type TaxRate
   rateId: ID!
   name: String!
   rateValue: String!
+}
+
+input TicketIdentifierInput
+{
+  ticketId: ID!
 }
 
 type TicketList

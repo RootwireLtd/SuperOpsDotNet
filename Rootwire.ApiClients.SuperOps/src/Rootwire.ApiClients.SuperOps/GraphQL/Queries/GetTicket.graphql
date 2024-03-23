@@ -1,0 +1,5 @@
+﻿query getTicket($input: TicketIdentifierInput!) {
+    getTicket(input: $input) {
+        ...TicketFragment
+    }
+}
