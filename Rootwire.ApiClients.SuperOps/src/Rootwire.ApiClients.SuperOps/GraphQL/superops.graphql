@@ -10,6 +10,7 @@ type Query {
   getServiceItemList(input: ListInfoInput!): ServiceItemList
   getServiceItem(input: ServiceItemIdentifierInput!) : ServiceItem
   getServiceCategoryList: [ServiceCategory]
+  getTicketList(input: ListInfoInput!): TicketList
 }
 
 input ListInfoInput {
@@ -211,4 +212,61 @@ type TaxRate
   rateId: ID!
   name: String!
   rateValue: String!
+}
+
+type TicketList
+{
+  tickets: [Ticket]
+  listInfo: ListInfo
+}
+
+type Ticket
+{
+  ticketId: ID!
+  displayId: String!
+  subject: String!
+  ticketType: TicketType!
+  source: TicketSource!
+  client: JSON
+  site: JSON
+  requester: JSON
+  additionalRequester: JSON
+  followers: JSON
+  techGroup: JSON
+  technician: JSON
+  status: String
+  priority: String
+  impact: String
+  urgency: String
+  category: String
+  subcategory: String
+  cause: String
+  subcause: String
+  resolutionCode: String
+  sla: JSON
+  createdTime: String
+  updatedTime: String
+  firstResponseDueTime: String
+  firstResponseTime: String
+  firstResponseViolated: Boolean
+  resolutionDueTime: String
+  resolutionTime: String
+  resolutionViolated: Boolean
+  customFields: JSON
+}
+
+enum TicketType
+{
+  INCIDENT
+  SERVICE_REQUEST
+}
+
+enum TicketSource
+{
+  FORM
+  AGENT
+  EMAIL
+  AI
+  PHONE
+  INTEGRATION
 }

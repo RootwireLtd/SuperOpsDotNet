@@ -1,0 +1,45 @@
+﻿query getTicketList($input: ListInfoInput!) {
+    getTicketList(input: $input) {
+        tickets {
+            ...TicketFragment
+        }
+        listInfo {
+            ...ListInfoFragment
+        }
+    }
+}
+
+fragment TicketFragment on Ticket
+{
+    ticketId
+    displayId
+    subject
+    ticketType
+    source
+    client
+    site
+    requester
+    additionalRequester
+    followers
+    techGroup
+    technician
+    status
+    priority
+    impact
+    urgency
+    category
+    subcategory
+    cause
+    subcause
+    resolutionCode
+    sla
+    createdTime
+    updatedTime
+    firstResponseDueTime
+    firstResponseTime
+    firstResponseViolated
+    resolutionDueTime
+    resolutionTime
+    resolutionViolated
+    customFields
+}
