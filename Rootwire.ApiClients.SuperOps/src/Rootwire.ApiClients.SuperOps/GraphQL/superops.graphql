@@ -7,6 +7,9 @@ type Query {
   getInvoice(input: InvoiceIdentifierInput!): Invoice
   getClientList(input: ListInfoInput!): ClientList
   getClient(input: ClientIdentifierInput!): Client
+  getServiceItemList(input: ListInfoInput!): ServiceItemList
+  getServiceItem(input: ServiceItemIdentifierInput!) : ServiceItem
+  getServiceCategoryList: [ServiceCategory]
 }
 
 input ListInfoInput {
@@ -140,4 +143,72 @@ type Sort
 {
   attribute: String
   order: SortOrder
+}
+
+type ServiceItemList
+{
+  items: [ServiceItem]
+  listInfo: ListInfo
+}
+
+
+input ServiceItemIdentifierInput
+{
+  itemId: ID!
+}
+
+type ServiceItem
+{
+  itemId: ID!,
+  name: String!,
+  description: String
+  quantityType: ServiceItemQuantityType!
+  category: ServiceCategory
+  useAsWorklogItem: Boolean
+  unitPrice: String
+  businessHoursUnitPrice: String
+  afterHoursUnitPrice: String
+  roundUpValue: Int
+  quantity: String
+  amount: String
+  adjustBlockItemAgainstAllItems: Boolean
+  blockItemAdjustedItems: [ServiceItem]
+  blockItemUsedIn: BLOCK_ITEM_USAGE_TYPE
+  salesTaxEnabled: Boolean
+  salesTax: Tax
+}
+
+enum  BLOCK_ITEM_USAGE_TYPE
+{
+  ALL_HOURS
+  BUSINESS_HOURS
+}
+
+enum ServiceItemQuantityType
+{
+  UNITS
+  HOURS
+  BLOCK_HOURS
+  BLOCK_MONEY
+}
+
+type ServiceCategory
+{
+  categoryId: ID!
+  name: String!
+}
+
+type Tax
+{
+  taxId: ID!
+  name: String!
+  rates: [TaxRate]
+  totalRate: String
+}
+
+type TaxRate
+{
+  rateId: ID!
+  name: String!
+  rateValue: String!
 }

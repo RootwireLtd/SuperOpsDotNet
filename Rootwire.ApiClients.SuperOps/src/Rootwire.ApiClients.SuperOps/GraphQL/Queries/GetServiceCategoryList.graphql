@@ -1,0 +1,6 @@
+query getServiceCategoryList {
+    getServiceCategoryList {
+        categoryId
+        name
+    }
+}
